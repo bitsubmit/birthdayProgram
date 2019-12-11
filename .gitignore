@@ -1,0 +1,10 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/BirthdayProgram/bin
+/BirthdayProgram/obj
+/BirthdayProgram/Properties/PublishProfiles
+/BirthdayProgram.sln
+/.vs/BirthdayProgram
+/BirthdayProgram/BirthdayProgram.csproj.user
