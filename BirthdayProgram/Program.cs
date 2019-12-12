@@ -34,9 +34,7 @@ namespace BirthdayProgram
             Console.WriteLine("Hej x\n");
             Console.WriteLine("Du er inviteret til min 30 års foedselsdag d. 01/02-2020\n");
             Console.WriteLine("Jeg glæder mig meget til at se dig! :-)\n");
-            Console.WriteLine("Hvor foregår det?\n");
-            Console.WriteLine("På: Emiliehøj 16, 1, mf. 8270 Hoejbjerg\n");
-            Console.WriteLine("\n\n");
+            Console.WriteLine("\n");
 
             YourNextMoveText()
                 .Wait();
@@ -59,6 +57,12 @@ namespace BirthdayProgram
             while (userInputNum > 2 || userInputNum == null)
             {
                 userInputNum = Convert.ToInt32(Console.ReadLine());
+
+                if (userInputNum == 0)
+                {
+                    Environment.Exit(0);
+                }
+
                 Console.WriteLine("\n");
 
                 if (userInputNum < 3)
@@ -95,7 +99,8 @@ namespace BirthdayProgram
                     SeperationLine()
                         .Wait();
 
-                    ReadTxtFile();
+                    ReadTxtFile("birthdayWishes.txt")
+                        .Wait();
 
                     YourNextMove()
                         .Wait();
@@ -110,6 +115,9 @@ namespace BirthdayProgram
                     Console.WriteLine("---------------------------------Du tastede 2 for mere info:-------------------------------------\n");
 
                     SeperationLine()
+                        .Wait();
+
+                    ReadTxtFile("moreInfo.txt")
                         .Wait();
 
                     YourNextMove()
@@ -136,16 +144,17 @@ namespace BirthdayProgram
 
             await Task.CompletedTask;
 
-            UserInputListener(userInputNum).Wait();
+            UserInputListener(userInputNum)
+                .Wait();
         }
 
-        private static void ReadTxtFile()
+        private static async Task ReadTxtFile(string src)
         {
             StringBuilder sb = new StringBuilder();
 
             try
             {
-                using StreamReader sr = new StreamReader("birthdayWishes.txt");
+                using StreamReader sr = new StreamReader(src);
                 String line;
 
                 while ((line = sr.ReadLine()) != null)
@@ -156,12 +165,12 @@ namespace BirthdayProgram
             catch (Exception e)
             {
                 Console.Write(e);
-                Console.ReadLine();
             }
 
             string allines = sb.ToString();
 
             Console.WriteLine(allines);
+            await Task.CompletedTask;
         }
     }
 }
