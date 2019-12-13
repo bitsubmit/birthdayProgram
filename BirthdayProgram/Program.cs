@@ -23,18 +23,17 @@ namespace BirthdayProgram
 
         private static async Task InitiazizeIntroText()
         {
-            SeperationLine()
-                .Wait();
+            ReadTxtFile("seperationLine.txt")
+                    .Wait();
 
-            Console.WriteLine("---------------------------------FOEDSELSDAGS INVITATION!----------------------------------------\n");
+            ReadTxtFile("title.txt")
+                    .Wait();
 
-            SeperationLine()
-                .Wait();
+            ReadTxtFile("seperationLine.txt")
+                    .Wait();
 
-            Console.WriteLine("Hej x\n");
-            Console.WriteLine("Du er inviteret til min 30 års foedselsdag d. 01/02-2020\n");
-            Console.WriteLine("Jeg glæder mig meget til at se dig! :-)\n");
-            Console.WriteLine("\n");
+            ReadTxtFile("introBody.txt")
+                    .Wait();
 
             YourNextMoveText()
                 .Wait();
@@ -45,7 +44,9 @@ namespace BirthdayProgram
         private static async Task YourNextMoveText()
         {
             Console.WriteLine("\n");
-            Console.WriteLine("Tast 1 for gaveliste. Tast 2 for mere info, eller tast 0 for at afslutte\n");
+
+            ReadTxtFile("commands.txt")
+                    .Wait();
 
             await Task.CompletedTask;
         }
@@ -70,18 +71,14 @@ namespace BirthdayProgram
                     break;
                 }
 
-                Console.WriteLine("Jeg forstod ikke dit svar prøv igen?\n");
-                Console.WriteLine("Tast 1 for gaveliste. Tast 2 for mere info eller tast 0 for at afslutte\n");
+                ReadTxtFile("errorMsg.txt")
+                    .Wait();
+
+                ReadTxtFile("commands.txt")
+                    .Wait();
             }
 
             return await Task.FromResult(userInputNum);
-        }
-
-        private static async Task SeperationLine()
-        {
-            Console.WriteLine("-------------------------------------------------------------------------------------------------\n");
-
-            await Task.CompletedTask;
         }
 
         private static async Task UserInputListener(int? userInputNum)
@@ -89,32 +86,29 @@ namespace BirthdayProgram
             switch (userInputNum)
             {
                 case 1:
-                    Console.WriteLine("\n\n");
+                    ReadTxtFile("seperationLine.txt")
+                    .Wait();
 
-                    SeperationLine()
-                        .Wait();
+                    ReadTxtFile("userSelectedOne.txt")
+                    .Wait();
 
-                    Console.WriteLine("----------------------Du tastede 1 og kan nu se hvad Simon ønsker sig:---------------------------\n");
-
-                    SeperationLine()
-                        .Wait();
+                    ReadTxtFile("seperationLine.txt")
+                    .Wait();
 
                     ReadTxtFile("birthdayWishes.txt")
                         .Wait();
 
                     YourNextMove()
                         .Wait();
-
                     break;
                 case 2:
-                    Console.WriteLine("\n\n");
-
-                    SeperationLine()
+                    ReadTxtFile("seperationLine.txt")
                         .Wait();
 
-                    Console.WriteLine("---------------------------------Du tastede 2 for mere info:-------------------------------------\n");
+                    ReadTxtFile("userSelectedTwo.txt")
+                    .Wait();
 
-                    SeperationLine()
+                    ReadTxtFile("seperationLine.txt")
                         .Wait();
 
                     ReadTxtFile("moreInfo.txt")
@@ -122,12 +116,10 @@ namespace BirthdayProgram
 
                     YourNextMove()
                         .Wait();
-
                     break;
                 default:
                     UserInputChecker()
                         .Wait();
-
                     break;
             }
 
