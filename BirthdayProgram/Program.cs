@@ -23,16 +23,16 @@ namespace BirthdayProgram
 
         private static async Task InitiazizeIntroText()
         {
-            ReadTxtFile("seperationLine.txt")
+            ReadTxtFile("txt/seperationLine.txt")
                     .Wait();
 
-            ReadTxtFile("title.txt")
+            ReadTxtFile("txt/title.txt")
                     .Wait();
 
-            ReadTxtFile("seperationLine.txt")
+            ReadTxtFile("txt/seperationLine.txt")
                     .Wait();
 
-            ReadTxtFile("introBody.txt")
+            ReadTxtFile("txt/introBody.txt")
                     .Wait();
 
             YourNextMoveText()
@@ -45,7 +45,7 @@ namespace BirthdayProgram
         {
             Console.WriteLine("\n");
 
-            ReadTxtFile("commands.txt")
+            ReadTxtFile("txt/commands.txt")
                     .Wait();
 
             await Task.CompletedTask;
@@ -71,10 +71,10 @@ namespace BirthdayProgram
                     break;
                 }
 
-                ReadTxtFile("errorMsg.txt")
+                ReadTxtFile("txt/errorMsg.txt")
                     .Wait();
 
-                ReadTxtFile("commands.txt")
+                ReadTxtFile("txt/commands.txt")
                     .Wait();
             }
 
@@ -86,32 +86,32 @@ namespace BirthdayProgram
             switch (userInputNum)
             {
                 case 1:
-                    ReadTxtFile("seperationLine.txt")
+                    ReadTxtFile("txt/seperationLine.txt")
                     .Wait();
 
-                    ReadTxtFile("userSelectedOne.txt")
+                    ReadTxtFile("txt/userSelectedOne.txt")
                     .Wait();
 
-                    ReadTxtFile("seperationLine.txt")
+                    ReadTxtFile("txt/seperationLine.txt")
                     .Wait();
 
-                    ReadTxtFile("birthdayWishes.txt")
+                    ReadTxtFile("txt/birthdayWishes.txt")
                         .Wait();
 
                     YourNextMove()
                         .Wait();
                     break;
                 case 2:
-                    ReadTxtFile("seperationLine.txt")
+                    ReadTxtFile("txt/seperationLine.txt")
                         .Wait();
 
-                    ReadTxtFile("userSelectedTwo.txt")
+                    ReadTxtFile("txt/userSelectedTwo.txt")
                     .Wait();
 
-                    ReadTxtFile("seperationLine.txt")
+                    ReadTxtFile("txt/seperationLine.txt")
                         .Wait();
 
-                    ReadTxtFile("moreInfo.txt")
+                    ReadTxtFile("txt/moreInfo.txt")
                         .Wait();
 
                     YourNextMove()
