@@ -147,7 +147,7 @@ namespace BirthdayProgram
             try
             {
                 using StreamReader sr = new StreamReader(src);
-                String line;
+                string line;
 
                 while ((line = sr.ReadLine()) != null)
                 {
@@ -159,9 +159,10 @@ namespace BirthdayProgram
                 Console.Write(e);
             }
 
-            string allines = sb.ToString();
+            string allLines = sb.ToString();
 
-            Console.WriteLine(allines);
+            Console.WriteLine(allLines);
+
             await Task.CompletedTask;
         }
     }
